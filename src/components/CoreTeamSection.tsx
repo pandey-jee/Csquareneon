@@ -9,7 +9,6 @@ import {
   Github, 
   Linkedin, 
   Mail, 
-  MapPin,
   Quote
 } from 'lucide-react';
 import { gsapUtils, useGSAP } from '@/hooks/useGSAP';
@@ -102,14 +101,14 @@ export default function CoreTeamSection() {
 
   if (isLoading) {
     return (
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-2xl bg-muted/30">
+        <div className="container-responsive">
+          <div className="grid-responsive-auto-fit gap-lg">
             {[...Array(4)].map((_, index) => (
               <Card key={index} className="animate-pulse">
-                <CardContent className="p-6">
-                  <div className="w-full h-48 bg-muted rounded-lg mb-4"></div>
-                  <div className="h-6 bg-muted rounded mb-2"></div>
+                <CardContent className="p-lg">
+                  <div className="w-full h-48 bg-muted rounded-lg mb-md"></div>
+                  <div className="h-6 bg-muted rounded mb-sm"></div>
                   <div className="h-4 bg-muted rounded w-3/4"></div>
                 </CardContent>
               </Card>
@@ -121,27 +120,27 @@ export default function CoreTeamSection() {
   }
 
   return (
-    <section id="team" className="py-20 bg-muted/30" data-testid="core-team-section">
-      <div className="container mx-auto px-6">
+    <section id="team" className="py-2xl bg-muted/30" data-testid="core-team-section">
+      <div className="container-responsive">
         {/* Section Header */}
-        <div className="team-title text-center mb-16">
-          <Badge variant="secondary" className="mb-4">
+        <div className="team-title text-center mb-2xl">
+          <Badge variant="secondary" className="mb-md">
             Meet Our Team
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-fluid-2xl font-bold text-foreground mb-lg">
             Dedicated 
             <span className="text-primary"> Leaders</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-fluid-lg text-muted-foreground max-w-content mx-auto leading-relaxed">
             Our passionate core team members who drive the vision and mission of CSquare, 
             ensuring every member gets the best learning experience.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid-responsive-auto-fit gap-xl items-start">
           {/* Team Member Cards */}
           <div className="team-cards">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid-responsive-auto-fit gap-lg">
               {displayTeam.map((member, index) => (
                 <Card 
                   key={member.id || index}
@@ -150,10 +149,10 @@ export default function CoreTeamSection() {
                   }`}
                   onClick={() => setSelectedMember(member)}
                 >
-                  <CardContent className="p-6">
-                    <div className="relative mb-4">
-                      <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-blue-600/20 rounded-lg flex items-center justify-center border border-border">
-                        <div className="text-6xl font-bold text-primary/30">
+                  <CardContent className="p-lg">
+                    <div className="relative mb-md">
+                      <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-blue-600/20 rounded-lg flex-responsive items-center justify-center border border-border">
+                        <div className="text-fluid-3xl font-bold text-primary/30">
                           {(member.name || 'Unknown').charAt(0)}
                         </div>
                       </div>
@@ -164,10 +163,10 @@ export default function CoreTeamSection() {
                         {member.position || 'Member'}
                       </Badge>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground text-center mb-2">
+                    <h3 className="text-fluid-lg font-semibold text-foreground text-center mb-sm">
                       {member.name || 'Unknown Name'}
                     </h3>
-                    <p className="text-sm text-muted-foreground text-center line-clamp-2">
+                    <p className="text-fluid-sm text-muted-foreground text-center line-clamp-2">
                       {member.bio || 'Passionate member of the CSquare community.'}
                     </p>
                   </CardContent>
@@ -180,17 +179,17 @@ export default function CoreTeamSection() {
           {selectedMember && (
             <div className="team-spotlight">
               <Card className="border border-border">
-                <CardContent className="p-8">
-                  <div className="flex items-center justify-between mb-6">
+                <CardContent className="p-xl">
+                  <div className="flex-responsive justify-between items-start mb-lg">
                     <div>
-                      <h3 className="text-3xl font-bold text-foreground mb-2">
+                      <h3 className="text-fluid-xl font-bold text-foreground mb-sm">
                         {selectedMember.name || 'Unknown Name'}
                       </h3>
-                      <Badge variant="default" className="text-lg px-4 py-1">
+                      <Badge variant="default" className="text-fluid-base px-md py-sm">
                         {selectedMember.position || 'Member'}
                       </Badge>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex-responsive gap-sm">
                       <Button variant="ghost" size="icon" onClick={prevMember}>
                         <ChevronLeft className="h-4 w-4" />
                       </Button>
@@ -200,10 +199,10 @@ export default function CoreTeamSection() {
                     </div>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-lg">
                     <div className="relative">
                       <Quote className="absolute -top-2 -left-2 h-8 w-8 text-primary/30" />
-                      <p className="text-lg text-muted-foreground leading-relaxed pl-6">
+                      <p className="text-fluid-base text-muted-foreground leading-relaxed pl-lg">
                         {selectedMember.bio || 'Passionate member of the CSquare community dedicated to excellence in competitive programming.'}
                       </p>
                     </div>
@@ -211,8 +210,8 @@ export default function CoreTeamSection() {
                     {/* Skills */}
                     {(selectedMember as any)?.skills && (
                       <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-3">Expertise</h4>
-                        <div className="flex flex-wrap gap-2">
+                        <h4 className="text-fluid-base font-semibold text-foreground mb-md">Expertise</h4>
+                        <div className="flex-responsive flex-wrap gap-sm">
                           {(selectedMember as any).skills.map((skill: string, index: number) => (
                             <Badge key={index} variant="outline">
                               {skill}
@@ -223,7 +222,7 @@ export default function CoreTeamSection() {
                     )}
 
                     {/* Contact Links */}
-                    <div className="flex gap-4 pt-4 border-t border-border">
+                    <div className="flex-responsive gap-md pt-md border-t border-border">
                       {selectedMember.github && (
                         <Button 
                           variant="outline" 
@@ -263,11 +262,11 @@ export default function CoreTeamSection() {
         </div>
 
         {/* Join Team CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-2xl">
           <Card className="bg-gradient-to-r from-primary to-blue-600 border-0">
-            <CardContent className="p-8 text-primary-foreground">
-              <h3 className="text-2xl font-bold mb-4">Want to Join Our Core Team?</h3>
-              <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
+            <CardContent className="p-xl text-primary-foreground">
+              <h3 className="text-fluid-xl font-bold mb-md">Want to Join Our Core Team?</h3>
+              <p className="text-fluid-base opacity-90 mb-lg max-w-content mx-auto">
                 We're always looking for passionate individuals who want to make a difference 
                 in the competitive programming community. Apply to become a core team member!
               </p>

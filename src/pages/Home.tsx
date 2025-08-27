@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import AchievementsSection from '@/components/AchievementsSection';
 import StatisticsSection from '@/components/StatisticsSection';
+import AchievementsSection from '@/components/AchievementsSection';
 import TeamSection from '@/components/TeamSection';
 import CollaboratorsSection from '@/components/CollaboratorsSection';
 import EventsSection from '@/components/EventsSection';
@@ -12,18 +12,20 @@ import GeometricBackground from '@/components/GeometricBackground';
 
 export default function Home() {
   return (
-    <div data-testid="home-page">
-      <GeometricBackground />
+    <div data-testid="home-page" className="relative">
+      <div className="parallax-bg">
+        <GeometricBackground />
+      </div>
       <AnimatedWatermark />
       <EventNotificationPopup />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
         <div>
-          <AchievementsSection />
+          <StatisticsSection />
         </div>
         <div>
-          <StatisticsSection />
+          <AchievementsSection />
         </div>
         <div>
           <TeamSection />

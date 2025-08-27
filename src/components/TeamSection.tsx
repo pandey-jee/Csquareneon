@@ -177,11 +177,11 @@ const TeamSection = () => {
         <div className="team-gallery-container">
           <CircularGallery 
             items={galleryItems}
-            bend={4}
+            bend={6}
             textColor="#00FFFF"
             borderRadius={0.08}
-            font="bold 28px 'JetBrains Mono', monospace"
-            scrollSpeed={3}
+            font="bold 24px 'JetBrains Mono', monospace"
+            scrollSpeed={2}
             scrollEase={0.08}
           />
         </div>

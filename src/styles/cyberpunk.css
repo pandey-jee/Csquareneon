@@ -515,3 +515,60 @@ a:hover::after {
     margin-bottom: var(--spacing-sm);
   }
 }
+
+/* Enhanced Navbar Scroll Behavior */
+.cyberpunk-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.cyberpunk-navbar.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-electric-blue);
+  box-shadow: 
+    0 4px 32px rgba(0, 255, 255, 0.1),
+    0 0 20px rgba(255, 0, 128, 0.05);
+}
+
+/* Performance optimizations for scroll animations */
+.animate-on-scroll {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced parallax background */
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh;
+  z-index: -1;
+  will-change: transform;
+}
+
+/* Accessibility: Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .parallax-bg {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}

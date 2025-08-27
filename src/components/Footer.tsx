@@ -134,20 +134,20 @@ export default function Footer() {
         <div className="footer-glow"></div>
       </div>
       
-      <div className="footer-container">
-        <div className="footer-content">
+      <div className="container-responsive footer-container">
+        <div className="grid-responsive-auto-fit footer-content gap-xl">
           {/* Logo Section */}
-          <div ref={logoRef} className="footer-logo-section">
-            <div className="logo-container">
+          <div ref={logoRef} className="footer-logo-section col-span-full lg:col-span-2">
+            <div className="logo-container flex-responsive items-center gap-md mb-md">
               <div className="logo-icon">
-                <span className="logo-text">C²</span>
+                <span className="logo-text text-fluid-xl">C²</span>
               </div>
               <div className="logo-info">
-                <h3 className="club-name">C Square</h3>
-                <p className="club-tagline">Competitive Programming Club</p>
+                <h3 className="club-name text-fluid-lg">C Square</h3>
+                <p className="club-tagline text-fluid-sm">Competitive Programming Club</p>
               </div>
             </div>
-            <p className="club-description">
+            <p className="club-description text-fluid-base max-w-content">
               Empowering students through competitive programming, algorithm mastery, 
               and innovative technology solutions. Join our community of passionate coders.
             </p>
@@ -155,54 +155,54 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div ref={(el) => addToSectionsRefs(el, 0)} className="footer-section">
-            <h4 className="section-title">Quick Links</h4>
-            <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#team">Our Team</a></li>
-              <li><a href="#events">Events</a></li>
-              <li><a href="#collaborators">Collaborations</a></li>
-              <li><a href="#about">About Us</a></li>
+            <h4 className="section-title text-fluid-base mb-md">Quick Links</h4>
+            <ul className="footer-links space-y-sm">
+              <li><a href="#home" className="text-fluid-sm">Home</a></li>
+              <li><a href="#team" className="text-fluid-sm">Our Team</a></li>
+              <li><a href="#events" className="text-fluid-sm">Events</a></li>
+              <li><a href="#collaborators" className="text-fluid-sm">Collaborations</a></li>
+              <li><a href="#about" className="text-fluid-sm">About Us</a></li>
             </ul>
           </div>
 
           {/* Resources */}
           <div ref={(el) => addToSectionsRefs(el, 1)} className="footer-section">
-            <h4 className="section-title">Resources</h4>
-            <ul className="footer-links">
-              <li><a href="#"><Code size={16} /> Practice Problems</a></li>
-              <li><a href="#"><Users size={16} /> Study Groups</a></li>
-              <li><a href="#"><Calendar size={16} /> Event Calendar</a></li>
-              <li><a href="#"><Trophy size={16} /> Leaderboard</a></li>
+            <h4 className="section-title text-fluid-base mb-md">Resources</h4>
+            <ul className="footer-links space-y-sm">
+              <li><a href="#" className="flex-responsive items-center gap-sm text-fluid-sm"><Code size={16} /> Practice Problems</a></li>
+              <li><a href="#" className="flex-responsive items-center gap-sm text-fluid-sm"><Users size={16} /> Study Groups</a></li>
+              <li><a href="#" className="flex-responsive items-center gap-sm text-fluid-sm"><Calendar size={16} /> Event Calendar</a></li>
+              <li><a href="#" className="flex-responsive items-center gap-sm text-fluid-sm"><Trophy size={16} /> Leaderboard</a></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div ref={(el) => addToSectionsRefs(el, 2)} className="footer-section">
-            <h4 className="section-title">Contact Us</h4>
-            <div className="contact-info">
-              <div className="contact-item">
-                <MapPin size={16} />
-                <span>Computer Science Department<br />University Campus</span>
+            <h4 className="section-title text-fluid-base mb-md">Contact Us</h4>
+            <div className="contact-info space-y-sm">
+              <div className="contact-item flex-responsive items-start gap-sm">
+                <MapPin size={16} className="mt-1 flex-shrink-0" />
+                <span className="text-fluid-sm">Computer Science Department<br />University Campus</span>
               </div>
-              <div className="contact-item">
-                <Mail size={16} />
-                <span>csquare@university.edu</span>
+              <div className="contact-item flex-responsive items-center gap-sm">
+                <Mail size={16} className="flex-shrink-0" />
+                <span className="text-fluid-sm">csquare@university.edu</span>
               </div>
-              <div className="contact-item">
-                <Phone size={16} />
-                <span>+1 (555) 123-4567</span>
+              <div className="contact-item flex-responsive items-center gap-sm">
+                <Phone size={16} className="flex-shrink-0" />
+                <span className="text-fluid-sm">+1 (555) 123-4567</span>
               </div>
-              <div className="contact-item">
-                <Globe size={16} />
-                <span>www.csquare.club</span>
+              <div className="contact-item flex-responsive items-center gap-sm">
+                <Globe size={16} className="flex-shrink-0" />
+                <span className="text-fluid-sm">www.csquare.club</span>
               </div>
             </div>
           </div>
 
           {/* Social Media */}
           <div ref={(el) => addToSectionsRefs(el, 3)} className="footer-section">
-            <h4 className="section-title">Connect With Us</h4>
-            <div ref={socialRef} className="social-links">
+            <h4 className="section-title text-fluid-base mb-md">Connect With Us</h4>
+            <div ref={socialRef} className="social-links flex-responsive gap-md">
               <a href="#" className="social-link github">
                 <Github size={20} />
                 <span className="social-tooltip">GitHub</span>
@@ -224,15 +224,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div ref={bottomRef} className="footer-bottom">
-          <div className="footer-bottom-content">
-            <div className="copyright">
-              <p>&copy; 2025 C Square. All rights reserved.</p>
-              <p>Designed with <span className="heart">💙</span> by the C Square Team</p>
+        <div ref={bottomRef} className="footer-bottom mt-xl pt-lg border-t border-cyberpunk-cyan/20">
+          <div className="footer-bottom-content flex-responsive justify-between items-center gap-md">
+            <div className="copyright text-center md:text-left">
+              <p className="text-fluid-sm">&copy; 2025 C Square. All rights reserved.</p>
+              <p className="text-fluid-xs">Designed with <span className="heart">💙</span> by the C Square Team</p>
             </div>
-            <button className="scroll-to-top" onClick={scrollToTop}>
+            <button className="scroll-to-top flex-responsive items-center gap-sm p-sm" onClick={scrollToTop}>
               <ArrowUp size={20} />
-              <span>Back to Top</span>
+              <span className="text-fluid-sm">Back to Top</span>
             </button>
           </div>
         </div>
