@@ -1,0 +1,24 @@
+/* TextType Cyberpunk Styling */
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+  font-family: 'Inter', monospace;
+}
+
+.text-type__content {
+  font-weight: 700;
+  text-shadow: 0 0 20px currentColor;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+  color: var(--electric-blue);
+  text-shadow: 0 0 15px var(--electric-blue);
+  font-weight: 400;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}

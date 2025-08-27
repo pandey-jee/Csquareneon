@@ -1,0 +1,333 @@
+/* CSquare Cyberpunk Gooey Navigation Styles */
+
+:root {
+  --linear-ease: linear(0, 0.068, 0.19 2.7%, 0.804 8.1%, 1.037, 1.199 13.2%, 1.245, 1.27 15.8%, 1.274, 1.272 17.4%, 1.249 19.1%, 0.996 28%, 0.949, 0.928 33.3%, 0.926, 0.933 36.8%, 1.001 45.6%, 1.013, 1.019 50.8%, 1.018 54.4%, 1 63.1%, 0.995 68%, 1.001 85%, 1);
+  
+  /* Cyberpunk particle colors */
+  --color-1: var(--electric-blue);
+  --color-2: var(--hot-pink);
+  --color-3: var(--vivid-yellow);
+  --color-4: var(--teal-accent);
+}
+
+.gooey-nav-container {
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.gooey-nav-container nav {
+  display: flex;
+  position: relative;
+  transform: translate3d(0, 0, 0.01px);
+  height: 100%;
+}
+
+.gooey-nav-container nav ul {
+  display: flex;
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 3;
+  align-items: center;
+  height: 100%;
+}
+
+.gooey-nav-container nav ul li {
+  border-radius: 0.4rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.gooey-nav-container nav ul li a {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border-radius: 0.4rem;
+  position: relative;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.gooey-nav-container nav ul li:hover a {
+  color: var(--electric-blue);
+  text-shadow: 0 0 12px var(--electric-blue);
+}
+
+.gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
+  box-shadow: 0 0 0 2px var(--electric-blue);
+}
+
+.gooey-nav-container nav ul li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.4rem;
+  background: linear-gradient(135deg, var(--electric-blue), var(--hot-pink));
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+.gooey-nav-container nav ul li.active {
+  color: var(--dark-charcoal);
+}
+
+.gooey-nav-container nav ul li.active a {
+  color: var(--dark-charcoal);
+  text-shadow: none;
+  font-weight: 600;
+}
+
+.gooey-nav-container nav ul li.active::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: cyberpunkGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes cyberpunkGlow {
+  0% {
+    box-shadow: 
+      0 0 15px rgba(0, 229, 255, 0.4),
+      0 0 30px rgba(0, 229, 255, 0.2);
+  }
+  100% {
+    box-shadow: 
+      0 0 20px rgba(255, 73, 216, 0.4),
+      0 0 40px rgba(255, 73, 216, 0.2);
+  }
+}
+
+.gooey-nav-container .effect {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  opacity: 1;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.gooey-nav-container .effect.text {
+  color: var(--white);
+  transition: color 0.3s ease;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.gooey-nav-container .effect.text.active {
+  color: var(--dark-charcoal);
+  text-shadow: none;
+  font-weight: 600;
+}
+
+.gooey-nav-container .effect.filter {
+  filter: blur(6px) contrast(100) blur(0);
+  mix-blend-mode: lighten;
+}
+
+.gooey-nav-container .effect.filter::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  z-index: -2;
+  background: var(--dark-charcoal);
+}
+
+.gooey-nav-container .effect.filter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--electric-blue), var(--hot-pink));
+  transform: scale(0);
+  opacity: 0;
+  z-index: -1;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+.gooey-nav-container .effect.active::after {
+  animation: cyberpunkPill 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes cyberpunkPill {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Cyberpunk Particles */
+.particle,
+.point {
+  display: block;
+  opacity: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform-origin: center;
+}
+
+.particle {
+  --time: 4s;
+  position: absolute;
+  top: calc(50% - 7px);
+  left: calc(50% - 7px);
+  animation: cyberpunkParticle calc(var(--time)) ease 1 -300ms;
+}
+
+.point {
+  background: var(--color);
+  opacity: 1;
+  animation: cyberpunkPoint calc(var(--time)) ease 1 -300ms;
+  box-shadow: 0 0 8px var(--color);
+  filter: brightness(1.3);
+}
+
+@keyframes cyberpunkParticle {
+  0% {
+    transform: rotate(0deg) translate(calc(var(--start-x)), calc(var(--start-y)));
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+  }
+
+  70% {
+    transform: rotate(calc(var(--rotate) * 0.5)) translate(calc(var(--end-x) * 1.1), calc(var(--end-y) * 1.1));
+    opacity: 1;
+    animation-timing-function: ease;
+  }
+
+  85% {
+    transform: rotate(calc(var(--rotate) * 0.66)) translate(calc(var(--end-x)), calc(var(--end-y)));
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: rotate(calc(var(--rotate) * 1.1)) translate(calc(var(--end-x) * 0.6), calc(var(--end-y) * 0.6));
+    opacity: 0;
+  }
+}
+
+@keyframes cyberpunkPoint {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+    box-shadow: 0 0 0 var(--color);
+  }
+
+  25% {
+    transform: scale(calc(var(--scale) * 0.3));
+    box-shadow: 0 0 4px var(--color);
+  }
+
+  38% {
+    opacity: 1;
+  }
+
+  65% {
+    transform: scale(var(--scale));
+    opacity: 1;
+    animation-timing-function: ease;
+    box-shadow: 0 0 12px var(--color);
+  }
+
+  85% {
+    transform: scale(var(--scale));
+    opacity: 0.8;
+    box-shadow: 0 0 8px var(--color);
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+    box-shadow: 0 0 0 var(--color);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gooey-nav-container {
+    height: 45px;
+  }
+
+  .gooey-nav-container nav ul {
+    gap: 1rem;
+  }
+
+  .gooey-nav-container nav ul li {
+    height: 35px;
+  }
+
+  .gooey-nav-container nav ul li a {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .particle,
+  .point {
+    width: 12px;
+    height: 12px;
+  }
+
+  .particle {
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .gooey-nav-container {
+    height: 40px;
+  }
+
+  .gooey-nav-container nav ul {
+    gap: 0.8rem;
+  }
+
+  .gooey-nav-container nav ul li {
+    height: 30px;
+  }
+
+  .gooey-nav-container nav ul li a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .particle,
+  .point {
+    width: 10px;
+    height: 10px;
+  }
+
+  .particle {
+    top: calc(50% - 5px);
+    left: calc(50% - 5px);
+  }
+}

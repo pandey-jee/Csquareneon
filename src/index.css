@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import './styles/cyberpunk.css';
+
+/* CSquare Cyberpunk Theme - Main CSS File */
+
+/* Root element styling */
+#root {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+}
+
+/* Remove default styles that might interfere */
+* {
+  box-sizing: border-box;
+}
+
+/* Global app container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-gradient);
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* Account for fixed navbar */
+}
+
+/* Page sections */
+.section {
+  padding: var(--spacing-xxl) 0;
+  position: relative;
+}
+
+.section:nth-child(even) {
+  background: var(--bg-gradient-alt);
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--text-primary);
+  font-size: var(--font-lg);
+  text-shadow: var(--glow-primary);
+}
+
+.loading::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-electric-blue);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-left: var(--spacing-sm);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error {
+  background: rgba(255, 73, 216, 0.1);
+  border: 1px solid var(--color-hot-pink);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  color: var(--color-hot-pink);
+  text-shadow: var(--glow-secondary);
+}
+
+/* Success states */
+.success {
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid var(--color-electric-blue);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  color: var(--color-electric-blue);
+  text-shadow: var(--glow-primary);
+}
+
+/* Custom cyberpunk scrollbar for webkit browsers */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-electric-blue) var(--color-dark-charcoal);
+}
+
+/* Disable text selection on UI elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 2px;
+  box-shadow: var(--glow-primary);
+}
+
+/* Remove focus outline on mouse clicks but keep for keyboard navigation */
+*:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --bg-gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --text-secondary: #ffffff;
+  }
+}
