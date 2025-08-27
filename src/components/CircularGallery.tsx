@@ -269,17 +269,22 @@ class Media {
       this.plane.position.y = 0;
       this.plane.rotation.z = 0;
     } else {
+      // Create oval/elliptical curve instead of circular
       const B_abs = Math.abs(this.bend);
-      const R = (H * H + B_abs * B_abs) / (2 * B_abs);
+      const ovalRatio = 0.6; // Make it more oval (0.6 means 60% height of circular)
       const effectiveX = Math.min(Math.abs(x), H);
 
-      const arc = R - Math.sqrt(R * R - effectiveX * effectiveX);
+      // Apply oval transformation to create elliptical curve
+      const normalizedX = effectiveX / H;
+      const ovalY = Math.sqrt(1 - normalizedX * normalizedX) * B_abs * ovalRatio;
+      
       if (this.bend > 0) {
-        this.plane.position.y = -arc;
-        this.plane.rotation.z = -Math.sign(x) * Math.asin(effectiveX / R);
+        this.plane.position.y = -ovalY;
+        // Gentler rotation for oval shape
+        this.plane.rotation.z = -Math.sign(x) * normalizedX * 0.3;
       } else {
-        this.plane.position.y = arc;
-        this.plane.rotation.z = Math.sign(x) * Math.asin(effectiveX / R);
+        this.plane.position.y = ovalY;
+        this.plane.rotation.z = Math.sign(x) * normalizedX * 0.3;
       }
     }
 

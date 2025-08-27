@@ -1,3 +1,109 @@
+/* Full Width Team Section */
+.team-section-fullwidth {
+  min-height: 100vh;
+  padding: 60px 0;
+  background: var(--cyberpunk-black);
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin: 0;
+}
+
+.team-container-fullwidth {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.team-header-center {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.team-subtitle-glow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cyberpunk-cyan, #00FFFF);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: block;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px var(--cyberpunk-cyan, #00FFFF), 0 0 30px var(--cyberpunk-cyan, #00FFFF);
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+.team-title-large {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--cyberpunk-cyan, #00FFFF), var(--cyberpunk-magenta, #FF0080), var(--cyberpunk-yellow, #FFFF00));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--cyberpunk-cyan, #00FFFF);
+  margin-bottom: 30px;
+  line-height: 1.1;
+  text-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+.team-description-center {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.team-gallery-fullwidth {
+  width: 100vw;
+  height: 70vh;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.team-controls-center {
+  text-align: center;
+  margin-top: 60px;
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.team-instructions-enhanced {
+  margin-bottom: 40px;
+}
+
+.control-hint-glow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.neon-text-bright {
+  color: var(--cyberpunk-cyan, #00FFFF);
+  text-shadow: 0 0 5px var(--cyberpunk-cyan, #00FFFF), 0 0 15px var(--cyberpunk-cyan, #00FFFF);
+  font-weight: 700;
+}
+
+@keyframes glow-pulse {
+  0% {
+    text-shadow: 0 0 15px var(--cyberpunk-cyan, #00FFFF), 0 0 30px var(--cyberpunk-cyan, #00FFFF);
+  }
+  100% {
+    text-shadow: 0 0 20px var(--cyberpunk-cyan, #00FFFF), 0 0 40px var(--cyberpunk-cyan, #00FFFF), 0 0 60px var(--cyberpunk-cyan, #00FFFF);
+  }
+}
+
+/* Original styles for backward compatibility */
 .team-section {
   min-height: 100vh;
   padding: 80px 0;

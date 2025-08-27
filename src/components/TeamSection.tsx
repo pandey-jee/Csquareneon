@@ -18,7 +18,7 @@ interface TeamMember {
 }
 
 const TeamSection = () => {
-  // Core team members with high-quality professional images
+  // Core team members with high-quality professional images (optimized to 8 members)
   const teamMembers: TeamMember[] = [
     {
       id: 1,
@@ -107,50 +107,6 @@ const TeamSection = () => {
       social: { github: "#", linkedin: "#", instagram: "#" },
       skills: ["Python", "Django", "PostgreSQL"],
       achievements: ["Hackathon Winner", "Tech Speaker"]
-    },
-    {
-      id: 9,
-      name: "Mike Wilson",
-      role: "Core Member",
-      position: "Frontend Developer",
-      description: "Dedicated to learning and sharing knowledge.",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=600&fit=crop&auto=format",
-      social: { github: "#", linkedin: "#" },
-      skills: ["Java", "Spring", "MySQL"],
-      achievements: ["Research Publication", "Industry Expert"]
-    },
-    {
-      id: 10,
-      name: "Sofia Garcia",
-      role: "Contributing Member",
-      position: "DevOps Engineer",
-      description: "Enthusiastic about open source contributions.",
-      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&h=600&fit=crop&auto=format",
-      social: { github: "#", linkedin: "#", instagram: "#" },
-      skills: ["React", "TypeScript", "GraphQL"],
-      achievements: ["Community Leader", "Mentor"]
-    },
-    {
-      id: 11,
-      name: "Ryan Taylor",
-      role: "Research Member",
-      position: "Data Scientist",
-      description: "Focused on building scalable applications.",
-      image: "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=600&h=600&fit=crop&auto=format",
-      social: { github: "#", linkedin: "#" },
-      skills: ["Go", "Docker", "Kubernetes"],
-      achievements: ["Contest Winner", "Open Source Contributor"]
-    },
-    {
-      id: 12,
-      name: "Maya Patel",
-      role: "Algorithm Specialist",
-      position: "Mobile Developer",
-      description: "Passionate about algorithms and problem solving.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=600&fit=crop&auto=format",
-      social: { github: "#", linkedin: "#", instagram: "#" },
-      skills: ["JavaScript", "Node.js", "MongoDB"],
-      achievements: ["Hackathon Winner", "Tech Speaker"]
     }
   ];
 
@@ -164,32 +120,32 @@ const TeamSection = () => {
   }));
 
   return (
-    <section id="team" className="team-section">
-      <div className="team-container">
-        <div className="team-header">
-          <span className="team-subtitle">Our Team</span>
-          <h2 className="team-title">Meet Our Core Team</h2>
-          <p className="team-description">
+    <section id="team" className="team-section-fullwidth">
+      <div className="team-container-fullwidth">
+        <div className="team-header-center">
+          <span className="team-subtitle-glow">Our Team</span>
+          <h2 className="team-title-large">Meet Our Core Team</h2>
+          <p className="team-description-center">
             Passionate members driving innovation in competitive programming
           </p>
         </div>
 
-        <div className="team-gallery-container">
+        <div className="team-gallery-fullwidth">
           <CircularGallery 
             items={galleryItems}
-            bend={6}
+            bend={3}
             textColor="#00FFFF"
-            borderRadius={0.08}
-            font="bold 24px 'JetBrains Mono', monospace"
-            scrollSpeed={2}
-            scrollEase={0.08}
+            borderRadius={0.12}
+            font="bold 28px 'JetBrains Mono', monospace"
+            scrollSpeed={1.5}
+            scrollEase={0.06}
           />
         </div>
 
-        <div className="team-controls">
-          <div className="team-instructions">
-            <span className="control-hint">
-              <span className="neon-text">Scroll</span> or <span className="neon-text">drag</span> to explore team members
+        <div className="team-controls-center">
+          <div className="team-instructions-enhanced">
+            <span className="control-hint-glow">
+              <span className="neon-text-bright">Scroll</span> or <span className="neon-text-bright">drag</span> to explore our amazing team
             </span>
           </div>
         </div>

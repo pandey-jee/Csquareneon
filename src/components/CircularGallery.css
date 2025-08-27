@@ -1,10 +1,12 @@
 .circular-gallery {
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 70vh;
   position: relative;
   overflow: hidden;
   background: transparent;
   cursor: grab;
+  margin: 0;
+  padding: 0;
 }
 
 .circular-gallery:active {
@@ -23,15 +25,21 @@
   -ms-user-select: none;
 }
 
-/* Responsive adjustments */
+/* Enhanced responsive adjustments for full width */
+@media (max-width: 1200px) {
+  .circular-gallery {
+    height: 65vh;
+  }
+}
+
 @media (max-width: 768px) {
   .circular-gallery {
-    height: 80vh;
+    height: 60vh;
   }
 }
 
 @media (max-width: 480px) {
   .circular-gallery {
-    height: 70vh;
+    height: 50vh;
   }
 }
