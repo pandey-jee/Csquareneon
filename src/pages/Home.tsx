@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import AnimatedWatermark from '@/components/AnimatedWatermark';
 import EventNotificationPopup from '@/components/EventNotificationPopup';
 import GeometricBackground from '@/components/GeometricBackground';
+import CyberpunkTerminal from '@/components/CyberpunkTerminal';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       </div>
       <AnimatedWatermark />
       <EventNotificationPopup />
+      <CyberpunkTerminal />
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
