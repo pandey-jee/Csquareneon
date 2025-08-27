@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import CircularGallery from './CircularGallery';
 import './TeamSection.css';
 
@@ -17,7 +19,26 @@ interface TeamMember {
   achievements: string[];
 }
 
-const TeamSection = () => {
+  const TeamSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % teamMembers.length);
+    // Trigger scroll simulation for the gallery
+    if (typeof window !== 'undefined') {
+      const event = new WheelEvent('wheel', { deltaY: 100 });
+      document.querySelector('.circular-gallery')?.dispatchEvent(event);
+    }
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
+    // Trigger scroll simulation for the gallery
+    if (typeof window !== 'undefined') {
+      const event = new WheelEvent('wheel', { deltaY: -100 });
+      document.querySelector('.circular-gallery')?.dispatchEvent(event);
+    }
+  };
   // Core team members with high-quality professional images (optimized to 8 members)
   const teamMembers: TeamMember[] = [
     {
@@ -131,6 +152,15 @@ const TeamSection = () => {
         </div>
 
         <div className="team-gallery-fullwidth">
+          {/* Navigation arrows for mobile */}
+          <button 
+            className="team-nav-arrow team-nav-left"
+            onClick={prevSlide}
+            aria-label="Previous team member"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
           <CircularGallery 
             items={galleryItems}
             bend={3}
@@ -140,13 +170,27 @@ const TeamSection = () => {
             scrollSpeed={1.5}
             scrollEase={0.06}
           />
+          
+          <button 
+            className="team-nav-arrow team-nav-right"
+            onClick={nextSlide}
+            aria-label="Next team member"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
 
         <div className="team-controls-center">
           <div className="team-instructions-enhanced">
             <span className="control-hint-glow">
-              <span className="neon-text-bright">Scroll</span> or <span className="neon-text-bright">drag</span> to explore our amazing team
+              <span className="neon-text-bright">Scroll</span>, <span className="neon-text-bright">drag</span>, or <span className="neon-text-bright">use arrows</span> to explore our amazing team
             </span>
+          </div>
+          
+          {/* Mobile navigation indicator */}
+          <div className="team-nav-indicator">
+            <span className="current-member">{currentIndex + 1}</span>
+            <span className="total-members">/ {teamMembers.length}</span>
           </div>
         </div>
       </div>

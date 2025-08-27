@@ -8,6 +8,8 @@
   overflow: hidden;
   margin-top: 0;
   z-index: 5;
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding/border in width */
 }
 
 .footer-background {
@@ -62,6 +64,8 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 80px 20px 0;
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in width */
 }
 
 .footer-content {
@@ -491,11 +495,12 @@
 @media (max-width: 768px) {
   .footer-container {
     padding: 60px 16px 0;
+    max-width: 100%; /* Ensure it fits in viewport */
   }
   
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px; /* Reduced gap for mobile */
     text-align: center;
   }
   
@@ -510,6 +515,7 @@
   .club-description {
     text-align: center;
     margin: 0 auto;
+    max-width: 90%; /* Prevent text from going to edges */
   }
   
   .section-title::after {
@@ -527,39 +533,75 @@
   
   .contact-item {
     text-align: left;
-    max-width: 300px;
+    max-width: 280px; /* Smaller max width for mobile */
   }
   
   .social-links {
     justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    gap: 12px; /* Smaller gap between social icons */
   }
   
   .footer-bottom-content {
     flex-direction: column;
     text-align: center;
+    gap: 15px; /* Add gap between stacked elements */
   }
 }
 
 @media (max-width: 480px) {
   .footer-container {
-    padding: 40px 12px 0;
+    padding: 30px 10px 0; /* Smaller padding for very small screens */
+    max-width: 100%;
+  }
+  
+  .footer-content {
+    gap: 25px; /* Smaller gap */
   }
   
   .logo-icon {
-    width: 50px;
-    height: 50px;
+    width: 45px; /* Smaller icon */
+    height: 45px;
   }
   
   .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Smaller text */
   }
   
   .club-name {
-    font-size: 1.5rem;
+    font-size: 1.3rem; /* Smaller club name */
+  }
+  
+  .club-description {
+    font-size: 0.9rem; /* Smaller description */
+    max-width: 95%; /* Almost full width but with some margin */
+    line-height: 1.5;
+  }
+  
+  .section-title {
+    font-size: 1.1rem; /* Smaller section titles */
+  }
+  
+  .footer-links a,
+  .contact-item {
+    font-size: 0.85rem; /* Smaller link and contact text */
   }
   
   .social-link {
-    width: 45px;
-    height: 45px;
+    width: 40px; /* Smaller social icons */
+    height: 40px;
+  }
+  
+  .social-links {
+    gap: 10px; /* Smaller gap between social icons */
+  }
+  
+  .footer-bottom {
+    padding: 15px 10px; /* Smaller bottom padding */
+  }
+  
+  .footer-bottom-content {
+    gap: 10px; /* Smaller gap */
+    font-size: 0.8rem; /* Smaller bottom text */
   }
 }

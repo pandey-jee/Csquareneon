@@ -8,7 +8,7 @@
   position: relative;
   overflow: hidden;
   background: var(--bg-primary);
-  padding: var(--spacing-xl) 0;
+  padding: calc(70px + var(--spacing-xl)) 0 var(--spacing-xl) 0; /* Added navbar height (70px) + spacing */
 }
 
 .cyberpunk-hero::before {
@@ -218,7 +218,7 @@
 
 @media (max-width: 768px) {
   .cyberpunk-hero {
-    padding: var(--spacing-lg) 0;
+    padding: calc(70px + var(--spacing-lg)) 0 var(--spacing-lg) 0; /* Navbar height + spacing for mobile */
   }
   
   .hero-content {

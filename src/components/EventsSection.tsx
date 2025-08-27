@@ -4,15 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   Calendar, 
   Clock, 
-  MapPin, 
   Trophy,
   Code,
   Laptop,
-  BookOpen,
-  ExternalLink,
-  UserPlus,
-  Bell,
-  X
+  BookOpen
 } from 'lucide-react';
 import './EventsSection.css';
 
@@ -35,7 +30,6 @@ interface Event {
 
 export default function EventsSection() {
   const [activeTab, setActiveTab] = useState<'past' | 'ongoing' | 'upcoming'>('upcoming');
-  const [showNotification, setShowNotification] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -142,7 +136,6 @@ export default function EventsSection() {
   ];
 
   const filteredEvents = eventsData.filter(event => event.status === activeTab);
-  const upcomingEvents = eventsData.filter(event => event.status === 'upcoming' && event.daysLeft && event.daysLeft <= 3);
 
   useEffect(() => {
     if (!sectionRef.current || !titleRef.current) return;
@@ -194,16 +187,6 @@ export default function EventsSection() {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, [activeTab]);
-
-  // Show notification for upcoming events
-  useEffect(() => {
-    if (upcomingEvents.length > 0) {
-      const timer = setTimeout(() => {
-        setShowNotification(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [upcomingEvents.length]);
 
   const addToRefs = (el: HTMLDivElement | null, index: number) => {
     if (el) cardsRef.current[index] = el;
@@ -292,46 +275,6 @@ export default function EventsSection() {
           </div>
         </div>
       </section>
-
-      {/* Event Notification Popup */}
-      {showNotification && upcomingEvents.length > 0 && (
-        <div className="event-notification-overlay">
-          <div className="event-notification">
-            <button 
-              className="notification-close"
-              onClick={() => setShowNotification(false)}
-            >
-              <X size={20} />
-            </button>
-            
-            <div className="notification-header">
-              <Bell className="notification-icon" />
-              <h3>Upcoming Event Alert!</h3>
-            </div>
-            
-            <div className="notification-content">
-              <h4>{upcomingEvents[0].title}</h4>
-              <p>{upcomingEvents[0].description}</p>
-              <div className="notification-details">
-                <span><Calendar size={16} /> {formatDate(upcomingEvents[0].date).date}</span>
-                <span><MapPin size={16} /> {upcomingEvents[0].venue}</span>
-                <span><Clock size={16} /> {upcomingEvents[0].daysLeft} days left</span>
-              </div>
-            </div>
-            
-            <div className="notification-actions">
-              <button className="btn-details">
-                <ExternalLink size={16} />
-                Details
-              </button>
-              <button className="btn-register">
-                <UserPlus size={16} />
-                Register
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }
