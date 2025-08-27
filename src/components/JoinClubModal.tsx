@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
 import { MemberRegistration } from '@/types';
+import './JoinClubModal.css';
 
 const membershipSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -73,118 +74,138 @@ export default function JoinClubModal({ isOpen, onClose }: JoinClubModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div data-testid="modal-join-club">
-      <div>
-        <h2>
-          Join CSquare
-        </h2>
-        <p data-testid="text-modal-subtitle">
-          Become a member of our competitive programming community
-        </p>
+    <div className="modal-overlay" data-testid="modal-join-club">
+      <div className="modal-container">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2 className="modal-title">
+              Join CSquare
+            </h2>
+            <p className="modal-subtitle" data-testid="text-modal-subtitle">
+              Become a member of our competitive programming community
+            </p>
+            <button 
+              type="button" 
+              className="modal-close"
+              onClick={handleClose}
+              disabled={mutation.isPending}
+            >
+              ×
+            </button>
+          </div>
+          
+          <form onSubmit={handleSubmit(onSubmit)} className="modal-form">
+            <div className="form-group">
+              <label htmlFor="name" className="form-label">
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                className="form-input"
+                placeholder="Enter your full name"
+                {...register('name')}
+                data-testid="input-name"
+              />
+              {errors.name && (
+                <p className="form-error" data-testid="error-name">{errors.name.message}</p>
+              )}
+            </div>
+        
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                className="form-input"
+                placeholder="your.email@college.edu"
+                {...register('email')}
+                data-testid="input-email"
+              />
+              {errors.email && (
+                <p className="form-error" data-testid="error-email">{errors.email.message}</p>
+              )}
+            </div>
+        
+            <div className="form-group">
+              <label htmlFor="rollNumber" className="form-label">
+                Roll Number
+              </label>
+              <input
+                id="rollNumber"
+                className="form-input"
+                placeholder="e.g., 2021CSE001"
+                {...register('rollNumber')}
+                data-testid="input-roll-number"
+              />
+              {errors.rollNumber && (
+                <p className="form-error" data-testid="error-roll-number">{errors.rollNumber.message}</p>
+              )}
+            </div>
+        
+            <div className="form-group">
+              <label className="form-label">
+                Academic Year
+              </label>
+              <select 
+                className="form-select"
+                onChange={(e) => setValue('academicYear', e.target.value as any)}
+                data-testid="select-academic-year"
+              >
+                <option value="">Select Year</option>
+                <option value="1st">1st Year</option>
+                <option value="2nd">2nd Year</option>
+                <option value="3rd">3rd Year</option>
+                <option value="4th">4th Year</option>
+              </select>
+              {errors.academicYear && (
+                <p className="form-error" data-testid="error-academic-year">{errors.academicYear.message}</p>
+              )}
+            </div>
+        
+            <div className="form-group">
+              <label className="form-label">
+                Programming Experience
+              </label>
+              <select 
+                className="form-select"
+                onChange={(e) => setValue('programmingExperience', e.target.value as any)}
+                data-testid="select-programming-experience"
+              >
+                <option value="">Select Level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+              {errors.programmingExperience && (
+                <p className="form-error" data-testid="error-programming-experience">{errors.programmingExperience.message}</p>
+              )}
+            </div>
+        
+            <div className="form-actions">
+              <button
+                type="button"
+                className="btn-cancel"
+                onClick={handleClose}
+                disabled={mutation.isPending}
+                data-testid="button-cancel-join"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="btn-submit"
+                disabled={mutation.isPending}
+                data-testid="button-submit-join"
+              >
+                {mutation.isPending ? 'Joining...' : 'Join CSquare'}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="name">
-            Full Name
-          </label>
-          <input
-            id="name"
-            placeholder="Enter your full name"
-            {...register('name')}
-            data-testid="input-name"
-          />
-          {errors.name && (
-            <p data-testid="error-name">{errors.name.message}</p>
-          )}
-        </div>
-        
-        <div>
-          <label htmlFor="email">
-            Email Address
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="your.email@college.edu"
-            {...register('email')}
-            data-testid="input-email"
-          />
-          {errors.email && (
-            <p data-testid="error-email">{errors.email.message}</p>
-          )}
-        </div>
-        
-        <div>
-          <label htmlFor="rollNumber">
-            Roll Number
-          </label>
-          <input
-            id="rollNumber"
-            placeholder="e.g., 2021CSE001"
-            {...register('rollNumber')}
-            data-testid="input-roll-number"
-          />
-          {errors.rollNumber && (
-            <p data-testid="error-roll-number">{errors.rollNumber.message}</p>
-          )}
-        </div>
-        
-        <div>
-          <label>
-            Academic Year
-          </label>
-          <select 
-            onChange={(e) => setValue('academicYear', e.target.value as any)}
-            data-testid="select-academic-year"
-          >
-            <option value="">Select Year</option>
-            <option value="1st">1st Year</option>
-            <option value="2nd">2nd Year</option>
-            <option value="3rd">3rd Year</option>
-            <option value="4th">4th Year</option>
-          </select>
-          {errors.academicYear && (
-            <p data-testid="error-academic-year">{errors.academicYear.message}</p>
-          )}
-        </div>
-        
-        <div>
-          <label>
-            Programming Experience
-          </label>
-          <select 
-            onChange={(e) => setValue('programmingExperience', e.target.value as any)}
-            data-testid="select-programming-experience"
-          >
-            <option value="">Select Level</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-          {errors.programmingExperience && (
-            <p data-testid="error-programming-experience">{errors.programmingExperience.message}</p>
-          )}
-        </div>
-        
-        <div>
-          <button
-            type="button"
-            onClick={handleClose}
-            disabled={mutation.isPending}
-            data-testid="button-cancel-join"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            disabled={mutation.isPending}
-            data-testid="button-submit-join"
-          >
-            {mutation.isPending ? 'Joining...' : 'Join CSquare'}
-          </button>
-        </div>
-      </form>
     </div>
   );
 }

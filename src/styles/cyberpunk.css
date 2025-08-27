@@ -14,6 +14,14 @@
   --color-white: #FFFFFF;
   --color-gray-light: #CCCCCC;
 
+  /* Alias for consistency across components */
+  --cyberpunk-cyan: #00FFFF;
+  --cyberpunk-magenta: #FF0080;
+  --cyberpunk-yellow: #FFFF00;
+  --cyberpunk-purple: #8000FF;
+  --cyberpunk-white: #FFFFFF;
+  --cyberpunk-dark: #000000;
+
   /* Primary Color Variants for More Intensity */
   --primary-color: var(--color-electric-blue);
   --secondary-color: var(--color-hot-pink);

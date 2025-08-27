@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AchievementsSection from '@/components/AchievementsSection';
 import StatisticsSection from '@/components/StatisticsSection';
-import CoreTeamSlider from '@/components/CoreTeamSlider';
+import TeamSection from '@/components/TeamSection';
 import CollaboratorsSection from '@/components/CollaboratorsSection';
 import EventsSection from '@/components/EventsSection';
 import Footer from '@/components/Footer';
@@ -26,7 +26,7 @@ export default function Home() {
           <StatisticsSection />
         </div>
         <div>
-          <CoreTeamSlider />
+          <TeamSection />
         </div>
         <div>
           <CollaboratorsSection />

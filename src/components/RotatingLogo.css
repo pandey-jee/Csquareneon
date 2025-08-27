@@ -20,9 +20,43 @@
   border-radius: 50%;
   transition: all 0.3s ease;
   filter: 
-    drop-shadow(0 0 15px #00FFFF)
-    drop-shadow(0 0 30px #00FFFF)
-    drop-shadow(0 0 45px #00FFFF);
+    drop-shadow(0 0 8px #00FFFF)
+    drop-shadow(0 0 16px rgba(0, 255, 255, 0.6))
+    drop-shadow(0 0 24px rgba(255, 0, 128, 0.4));
+  animation: multicolor-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes multicolor-glow {
+  0% {
+    filter: 
+      drop-shadow(0 0 8px #00FFFF)
+      drop-shadow(0 0 16px rgba(0, 255, 255, 0.8))
+      drop-shadow(0 0 24px rgba(0, 255, 255, 0.4));
+  }
+  25% {
+    filter: 
+      drop-shadow(0 0 8px #FF0080)
+      drop-shadow(0 0 16px rgba(255, 0, 128, 0.8))
+      drop-shadow(0 0 24px rgba(255, 0, 128, 0.4));
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 8px #00FF80)
+      drop-shadow(0 0 16px rgba(0, 255, 128, 0.8))
+      drop-shadow(0 0 24px rgba(0, 255, 128, 0.4));
+  }
+  75% {
+    filter: 
+      drop-shadow(0 0 8px #8000FF)
+      drop-shadow(0 0 16px rgba(128, 0, 255, 0.8))
+      drop-shadow(0 0 24px rgba(128, 0, 255, 0.4));
+  }
+  100% {
+    filter: 
+      drop-shadow(0 0 8px #FFFF00)
+      drop-shadow(0 0 16px rgba(255, 255, 0, 0.8))
+      drop-shadow(0 0 24px rgba(255, 255, 0, 0.4));
+  }
 }
 
 /* Decorative rings */

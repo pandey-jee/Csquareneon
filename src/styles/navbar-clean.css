@@ -63,6 +63,8 @@
 .navbar-logo {
   width: 40px;
   height: 40px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
   filter: drop-shadow(0 0 10px var(--electric-blue));
   transition: all 0.3s ease;
 }
@@ -91,13 +93,13 @@
   transform: scale(1.05);
 }
 
-/* Desktop Menu - Center */
+/* Desktop Menu - Right aligned */
 .navbar-menu {
   display: flex;
   align-items: center;
   gap: 2rem;
   flex: 1;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .navbar-gooey-wrapper {

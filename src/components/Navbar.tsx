@@ -79,38 +79,6 @@ export default function Navbar() {
                 colors={[1, 2, 3, 4]}
               />
             </div>
-            
-            {/* Auth Buttons */}
-            <div className="navbar-auth">
-              {isAuthenticated ? (
-                <>
-                  {(user as any)?.isAdmin && (
-                    <button
-                      onClick={handleAdminDashboard}
-                      className="btn btn-primary"
-                      data-testid="button-admin-dashboard"
-                    >
-                      Admin Dashboard
-                    </button>
-                  )}
-                  <button
-                    onClick={handleLogout}
-                    className="btn btn-outline"
-                    data-testid="button-logout"
-                  >
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <button
-                  onClick={handleLogin}
-                  className="btn btn-primary"
-                  data-testid="button-login"
-                >
-                  Admin Login
-                </button>
-              )}
-            </div>
           </div>
           
           {/* Mobile Menu Button */}

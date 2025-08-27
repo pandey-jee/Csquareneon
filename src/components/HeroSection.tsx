@@ -6,6 +6,7 @@ import TextType from './TextType';
 import GradientText from './GradientText';
 import Button3D from './Button3D';
 import RotatingLogo from './RotatingLogo';
+import GlitchText from './GlitchText';
 
 export default function HeroSection() {
   const [showJoinModal, setShowJoinModal] = useState(false);
@@ -59,7 +60,11 @@ export default function HeroSection() {
             <div ref={textRef} className="hero-text">
               <div>
                 <h1 className="hero-title">
-                  <span className="hero-title-welcome">Welcome to</span>
+                  <div className="hero-title-welcome">
+                    <GlitchText speed={1} enableShadows={true} enableOnHover={false}>
+                      Welcome to Csquare
+                    </GlitchText>
+                  </div>
                   <GradientText 
                     className="hero-title-csquare"
                     animationSpeed={3}
