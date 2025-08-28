@@ -6,16 +6,13 @@ import CollaboratorsSection from '@/components/CollaboratorsSection';
 import EventsSection from '@/components/EventsSection';
 import Footer from '@/components/Footer';
 import AnimatedWatermark from '@/components/AnimatedWatermark';
-import GeometricBackground from '@/components/GeometricBackground';
 import CyberpunkTerminal from '@/components/CyberpunkTerminal';
 import FloatingBackToTop from '@/components/FloatingBackToTop';
 
 export default function Home() {
   return (
     <div data-testid="home-page" className="relative">
-      <div className="parallax-bg">
-        <GeometricBackground />
-      </div>
+      {/* Removed GeometricBackground to use only InteractiveBackground */}
       <AnimatedWatermark />
       <CyberpunkTerminal />
       <FloatingBackToTop />

@@ -7,10 +7,7 @@
 
 .events-section {
   padding: 60px 0; /* Reduced from 120px to 60px for better fit */
-  background: linear-gradient(135deg, 
-    rgba(0, 0, 0, 0.95) 0%, 
-    rgba(16, 16, 24, 0.95) 50%, 
-    rgba(0, 0, 0, 0.95) 100%);
+  background: transparent; /* Remove background to use global background */
   position: relative;
   overflow: hidden;
 }

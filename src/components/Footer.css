@@ -1,9 +1,6 @@
 .cyberpunk-footer {
   position: relative;
-  background: linear-gradient(135deg, 
-    rgba(0, 0, 0, 0.98) 0%, 
-    rgba(16, 16, 24, 0.98) 50%, 
-    rgba(0, 0, 0, 0.98) 100%);
+  background: transparent; /* Remove background to use global background */
   color: #FFFFFF;
   overflow: hidden;
   margin-top: 0;

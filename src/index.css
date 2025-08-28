@@ -10,7 +10,7 @@
 /* Root element styling */
 #root {
   min-height: 100vh;
-  background: var(--bg-gradient);
+  background: transparent; /* Let InteractiveBackground handle it */
 }
 
 /* Remove default styles that might interfere */
@@ -23,7 +23,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--bg-gradient);
+  background: transparent; /* Let InteractiveBackground handle it */
 }
 
 /* Main content area */
@@ -39,7 +39,7 @@
 }
 
 .section:nth-child(even) {
-  background: var(--bg-gradient-alt);
+  background: transparent; /* Let InteractiveBackground handle it */
 }
 
 /* Loading states */

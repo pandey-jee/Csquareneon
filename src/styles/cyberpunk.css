@@ -91,7 +91,7 @@
 
 body {
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg-gradient);
+  background: transparent; /* Let InteractiveBackground handle the background */
   color: var(--text-secondary);
   line-height: 1.6;
   min-height: 100vh;

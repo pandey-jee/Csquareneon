@@ -2,7 +2,7 @@
 .team-section-fullwidth {
   min-height: 100vh;
   padding: 60px 0;
-  background: var(--cyberpunk-black);
+  background: transparent; /* Remove background to use global background */
   position: relative;
   overflow: hidden;
   width: 100vw;
