@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import StatisticsSection from '@/components/StatisticsSection';
 import AchievementsSection from '@/components/AchievementsSection';
 import TeamSection from '@/components/TeamSection';
 import CollaboratorsSection from '@/components/CollaboratorsSection';
@@ -21,9 +20,6 @@ export default function Home() {
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
-        <div>
-          <StatisticsSection />
-        </div>
         <div>
           <AchievementsSection />
         </div>
