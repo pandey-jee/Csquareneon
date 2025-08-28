@@ -1,0 +1,176 @@
+/* Interactive Background Styles */
+.interactive-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(16, 16, 24, 0.98) 25%,
+    rgba(32, 16, 32, 0.95) 50%,
+    rgba(16, 24, 32, 0.98) 75%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Circuit board pattern */
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    /* Diagonal lines for tech feel */
+    linear-gradient(45deg, transparent 48%, rgba(255, 0, 128, 0.02) 49%, rgba(255, 0, 128, 0.02) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(255, 255, 0, 0.02) 49%, rgba(255, 255, 0, 0.02) 51%, transparent 52%),
+    /* Radial gradients for ambient lighting */
+    radial-gradient(circle at 15% 15%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(255, 0, 128, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 15% 85%, rgba(255, 255, 0, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 85% 85%, rgba(128, 0, 255, 0.08) 0%, transparent 50%),
+    /* Central glow */
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.03) 0%, transparent 80%);
+  background-size: 
+    60px 60px,
+    60px 60px,
+    120px 120px,
+    120px 120px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  opacity: 0.5;
+  animation: subtle-shift 20s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-shift {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(5px) translateY(-3px);
+  }
+  50% {
+    transform: translateX(-3px) translateY(5px);
+  }
+  75% {
+    transform: translateX(2px) translateY(-2px);
+  }
+  100% {
+    transform: translateX(-1px) translateY(3px);
+  }
+}
+
+/* Animated elements for subtle movement */
+.background-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      rgba(0, 255, 255, 0.15) 0%, 
+      rgba(255, 0, 128, 0.08) 30%,
+      transparent 60%);
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+/* Add pulsing effect */
+.background-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      transparent 0%, 
+      transparent 20%,
+      rgba(0, 255, 255, 0.05) 40%,
+      transparent 80%);
+  opacity: 0.8;
+  animation: pulse-glow 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .background-overlay {
+    background-size: 
+      30px 30px,
+      30px 30px,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-overlay {
+    background-size: 
+      20px 20px,
+      20px 20px,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    opacity: 0.2;
+  }
+}
+
+/* Performance optimizations */
+.background-canvas {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .interactive-background {
+    display: none;
+  }
+}
