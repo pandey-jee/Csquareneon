@@ -5,7 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useAuth } from "@/hooks/useAuth";
-import InteractiveBackground from "@/components/InteractiveBackground";
+import ParticleBackground from "@/components/ParticleBackground";
+import SplashCursor from "@/components/SplashCursor";
 import Home from "@/pages/Home";
 import AdminDashboard from "@/pages/AdminDashboard";
 import NotFound from "@/pages/not-found";
@@ -57,7 +58,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="codequest-theme">
         <TooltipProvider>
-          <InteractiveBackground />
+          <ParticleBackground />
+          <SplashCursor />
           <Toaster />
           <Router />
         </TooltipProvider>
