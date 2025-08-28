@@ -820,3 +820,109 @@ html {
     height: 60vh;
   }
 }
+
+/* ===== FLOATING BACK TO TOP BUTTON ===== */
+.floating-back-to-top {
+  position: fixed;
+  bottom: 120px; /* Position above terminal */
+  right: 30px;
+  z-index: 30; /* Lower than terminal but higher than other content */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyberpunk-cyan), var(--cyberpunk-magenta));
+  border: 2px solid var(--cyberpunk-cyan);
+  color: var(--cyberpunk-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 15px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transform-origin: center;
+}
+
+.floating-back-to-top::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--cyberpunk-cyan), var(--cyberpunk-magenta), var(--cyberpunk-yellow));
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.floating-back-to-top:hover::before {
+  opacity: 0.7;
+}
+
+.floating-back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(0, 255, 255, 0.4),
+    0 0 30px rgba(0, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-color: var(--cyberpunk-yellow);
+}
+
+.floating-back-to-top:active {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}
+
+/* Pulse ring animation */
+.floating-back-to-top .pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--cyberpunk-cyan);
+  opacity: 0;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .floating-back-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 100px; /* Position above terminal on mobile */
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-back-to-top {
+    width: 40px;
+    height: 40px;
+    bottom: 90px; /* Position above terminal on mobile */
+    right: 15px;
+  }
+}

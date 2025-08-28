@@ -15,19 +15,7 @@
   overflow: hidden;
 }
 
-.events-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
-  pointer-events: none;
-}
+/* Removed animated background pseudo-element */
 
 .events-container {
   max-width: 1400px;
@@ -61,7 +49,7 @@
   background-clip: text;
   text-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
   position: relative;
-  animation: glow-pulse 3s ease-in-out infinite alternate;
+  /* Removed glow pulse animation */
 }
 
 @supports not (-webkit-background-clip: text) {
@@ -93,29 +81,10 @@
   background: #00FFFF;
   border-radius: 50%;
   box-shadow: 0 0 15px #00FFFF;
-  animation: pulse-dot 2s ease-in-out infinite;
+  /* Removed pulse dot animation */
 }
 
-@keyframes glow-pulse {
-  0% { 
-    text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-  }
-  100% { 
-    text-shadow: 0 0 40px rgba(0, 255, 255, 1), 
-                 0 0 60px rgba(255, 0, 128, 0.6);
-  }
-}
-
-@keyframes pulse-dot {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  50% { 
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0.7;
-  }
-}
+/* Removed unused keyframe animations: glow-pulse and pulse-dot */
 
 /* Events Tabs */
 .events-tabs {
@@ -176,8 +145,8 @@
 /* Events Grid */
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Smaller minimum width */
-  gap: 30px; /* Reduced gap */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Even smaller minimum width */
+  gap: 25px; /* Reduced gap */
   place-items: center;
 }
 
@@ -185,7 +154,7 @@
 .event-card-wrapper {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 320px; /* Reduced from 400px to 320px */
   cursor: pointer;
 }
 
@@ -200,40 +169,26 @@
 
 .event-card-wrapper::after,
 .event-card-wrapper::before {
-  content: " ";
+  content: "";
   position: absolute;
   z-index: -1;
-  inset: -8px;
-  background: conic-gradient(
-    from var(--gradient-angle),
-    rgba(31, 41, 55, 0.9),
-    #6420aa,
-    #ff3ea5,
-    #ff7ed4,
-    #ff3ea5,
-    #6420aa,
-    rgba(31, 41, 55, 0.9)
+  inset: -3px; /* Reduced from -8px to -3px for thinner border */
+  background: linear-gradient(45deg,
+    #00FFFF,
+    #FF0080,
+    #FFFF00,
+    #8000FF
   );
-  border-radius: inherit;
-  animation: rotate 2.5s linear infinite;
+  border-radius: 18px; /* Slightly larger than card's border-radius */
+  /* Removed rotating animation */
 }
 
 .event-card-wrapper::after {
-  filter: blur(3rem);
+  filter: blur(1rem); /* Reduced blur for cleaner look */
+  opacity: 0.7;
 }
 
-@keyframes rotate {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
-}
-
-.event-card-wrapper:hover .event-card {
-  transform: translateY(-5px);
-}
+/* Removed rotate keyframe animation */
 
 /* Card Content Styles (Based on NFT Card) */
 .hero-image-container {
@@ -244,7 +199,7 @@
 
 .hero-image {
   width: 100%;
-  height: 250px;
+  height: 180px; /* Reduced from 250px to 180px */
   object-fit: cover;
   border-radius: 15px 15px 0 0;
   transition: transform 0.3s ease;
@@ -278,7 +233,7 @@
 }
 
 .main-content {
-  padding: 24px;
+  padding: 18px; /* Reduced from 24px to 18px */
 }
 
 .main-content h1 {
@@ -575,21 +530,30 @@
   }
 
   .events-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smaller cards */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller cards */
     gap: 20px; /* Smaller gap */
   }
 
   .event-card-wrapper {
-    max-width: 300px; /* Smaller max width */
+    max-width: 280px; /* Smaller max width */
   }
 
   /* Make card content smaller */
   .event-card {
-    padding: 15px; /* Smaller padding */
+    border-radius: 12px; /* Slightly smaller border radius */
+  }
+
+  .hero-image {
+    height: 150px; /* Smaller image height */
+    border-radius: 12px 12px 0 0;
+  }
+
+  .main-content {
+    padding: 14px; /* Smaller padding */
   }
 
   .event-title {
-    font-size: 1.1rem; /* Smaller title */
+    font-size: 1rem; /* Smaller title */
   }
 
   .event-description {
